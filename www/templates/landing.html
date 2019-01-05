@@ -1,0 +1,114 @@
+<style type="text/css">
+img{width: 100% !important;height: height:40vh !important}
+red{color: red;}
+.swiper-pagination.swiper-pagination-clickable {display: none;}
+.item-body{
+  height: 20vh !important;
+  background: none;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.6);
+}
+.button{
+  font-size: 14px !important;
+  font-weight: bolder !important;
+  line-height: 47px;
+  cursor: pointer;
+}
+.list_head,.list_head > a {
+  cursor: pointer;background-color: rgba(0,0,0,0.2) !important;color: white;
+  font-weight: 600;
+  font-family: inherit;
+  text-align: left;
+  font-size: 14px !important
+}
+.list_head,.list_head > a > p {
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 14px !important
+}
+.news >.item{padding: 0px 10px;}
+.subdued {text-align: center;color: white !important;}
+li{ list-style-type: disc !important;margin: 0 0 0 10px; }
+</style>
+<ion-view class="homeView" view-title="" hide-nav-bar="true">
+  <ion-content ng-controller="HomeController" ng-init="GetDashboardData()">
+      <button class="button button-icon button-energized ion-navicon-round" style="font-size: 32px !important;position: absolute;" menu-toggle="left"></button>  
+     
+     
+      <div class="galleryView">
+        <div id="bender" style="top:-45px !important;width: 97px !important;height: 200px !important;">
+            <br><br>
+            <img src="img/menulogo.png" alt="DOI" class="animated">   
+        </div>
+        <h1 class="animated bounceInDown text-center" style="font-size: 18px;font-weight: 800;margin-top: -120px">
+          Department of Industries<br>
+          <small style="font-size: 16px;font-weight: 800">MINING &amp; GEOLOGICAL WING<br></small>
+          <small style="font-size: 12px;font-weight: 800">
+              Udyog Bhawan, Bemloe, Shimla-171001,<br>
+              Himachal Pradesh<br>
+          </small>
+        </h1>
+      </div>
+      <div id="container" class="animated">
+        <ion-slides style="background: none; background: rgba(0,0,0,0.8) !important; height: 40vh !important;" 
+                    class="animated bounceInDown" options="data.sliderOptions" slider="data.sliderDelegate">
+            <ion-slide-page><img style="height: 40vh !important" src="img/slides/1.jpg"></ion-slide-page>
+            <ion-slide-page><img style="height: 40vh !important" src="img/slides/2.jpg"></ion-slide-page>
+            <ion-slide-page><img style="height: 40vh !important" src="img/slides/3.jpg"></ion-slide-page>
+            <ion-slide-page><img style="height: 40vh !important" src="img/slides/4.jpg"></ion-slide-page>
+            <ion-slide-page><img style="height: 40vh !important" src="img/slides/5.png"></ion-slide-page>
+            <ion-slide-page><img style="height: 40vh !important" src="img/slides/6.png"></ion-slide-page>
+            <ion-slide-page><img style="height: 40vh !important" src="img/slides/7.png"></ion-slide-page>
+        </ion-slides>
+        <div class="button-bar">
+          <a class="button button-positive animated bounceInUp icon ion-log-in" 
+                  ng-if="!userInfo.token" ng-title="Investor Login" on-tap="GoToLogin('inv')">&nbsp;Investor Login</a>
+          <a class="button button-balanced animated bounceInUp icon ion-log-in" 
+                  ng-if="!userInfo.token" ng-title="Department Login" on-tap="GoToLogin('dep')">&nbsp;Department Login</a>
+          <a class="button button-positive animated bounceInUp icon ion-ios-telephone" 
+                  ng-if="userInfo.token" ng-title="Call Helpline" ng-href="tel:+91 9736567617">&nbsp;Helpline
+          </a>
+          <a class="button button-balanced animated bounceInUp icon ion-email" 
+                  ng-if="userInfo.token" target="_system" ng-title="Send Query" ng-href="mailto:dirindus-hp@nic.in">&nbsp;Send Query
+          </a>
+        </div>
+        <div class="button-bar">
+          <a class="button button-assertive animated bounceInDown icon ion-information-circled" on-tap="openItem(items)">&nbsp;Get M-Form Detail</a>
+        </div>
+        <ion-slides style="background: none; background: rgba(0,0,0,0.2) !important; height: 20vh !important;"
+                    class="animated bounceInUp" ng-show="PageData != 'false'" options="data.NewsOptions" slider="news.sliderDelegate">
+          <ion-slide-page ng-repeat="item in PageData">
+            <div class="list news">
+                <div class="item list_head item-body">
+                  <a ng-href="{{item.news_link}}" target="_system" class="subdued">
+                    <p>
+                      <li>{{item.news_name}}</li>
+                    </p>
+                    <p style="text-align: right">
+                      <i class="subdued icon ion-clock"></i>
+                      {{getDate(item.date)|date:'medium'}}
+                    </p>
+                  </a>
+                </div>
+            </div>
+          </ion-slide-page>
+        </ion-slides>
+        <div ng-show="!PageData" class="list news">
+            <div class="item list_head item-body">
+              <p class="subdued">
+                <ion-spinner icon="lines" class="spinner-energized"></ion-spinner><br>Fetching News Section<br>Please Wait...
+              </p>
+            </div>
+        </div>
+        <div ng-if="PageData=='false'" class="list news">
+            <div class="item list_head item-body">
+              <p class="subdued">
+                No News Found.
+              </p>
+            </div>
+        </div>
+      </div>   
+   </ion-content>
+</ion-view>

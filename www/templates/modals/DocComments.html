@@ -1,0 +1,42 @@
+<style type="text/css">
+ .user{
+  font-size: 12px;
+  font-weight: 800;
+ }
+ .cmnt{
+  font-size: 14px !important;
+  font-weight: 800;
+  color: #888 !important;
+  background: rgba(0,0,0,0.05);
+  text-align: justify;
+  padding: 10px !important;
+  border-radius: 5px !important;
+ } 
+</style>
+<ion-modal-view class="usersModal bigModal" style="background-color:#fcb711">
+  <ion-header-bar style="background-color: #D86B67;">
+    <h1 class="title">Document Comments</h1>
+    <button class="button button-dark icon ion-close-round" ng-click="closeModal();"></button>
+  </ion-header-bar>
+  <ion-content class="animated pulse">
+    <div class="list">
+      <img class="full-image" src="{{image}}">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-quote placeholder-icon"></i>
+          <input type="search" ng-model="data.comment" placeholder="Leave your comment...">
+        </label>
+        <button ng-disabled="!data.comment" on-tap="SaveComment(doc_id)" class="button button-clear icon ion-paper-airplane"></button>
+      </div>
+      <div class="item item-body" ng-repeat="comment in comments">
+        <div class="item-text-wrap">
+          <p class="cmnt">{{comment.comments}}</p>
+          <p>
+            <a class="subdued user icon ion-person" style="float: left">&nbsp;{{comment.user_name}}</a>
+            <a class="subdued user icon ion-clock" style="float: right">&nbsp;{{getDate(comment.comment_on) | date:'medium'}}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,16 @@
+<ion-modal-view class="usersModal bigModal">
+	<ion-header-bar>
+		<h1 class="title icon ion-person">&nbsp;{{userInfo.full_name}}</h1>
+		<button class="button button-dark icon ion-close-round" ng-click="closeModal();"></button>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list can-swipe="true">
+			<ion-item class="animate-item icon ion-email" ng-if="userInfo.email">&nbsp;{{userInfo.email}}</ion-item>
+			<ion-item class="animate-item icon ion-card" ng-if="userInfo.iuid">&nbsp;{{userInfo.iuid}}</ion-item>
+			<ion-item class="animate-item icon ion-android-contact" ng-if="userInfo.mobile_number">&nbsp;{{userInfo.mobile_number}}</ion-item>
+			<ion-item class="animate-item" target="_system" ng-href="tel:+91 9736567617"><i class="icon ion-android-call"></i>&nbsp;Helpline</ion-item>
+			<ion-item class="animate-item" target="_system" ng-href="mailto:dirindus-hp@nic.in"><i class="icon ion-paper-airplane"></i>&nbsp;Send Query</ion-item>
+			<ion-item class="animate-item icon ion-log-out" ng-if="userInfo.token;" ng-click="logout()">&nbsp;Logout</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-modal-view>

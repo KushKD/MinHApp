@@ -1,0 +1,97 @@
+<style type="text/css">
+  .appCnt .icon::before, .appCnt.icon::before{
+      font-size: 51px !important;
+      text-align: center;
+  }
+  .galleryView .appCnt {
+      min-height: 60px;
+      padding: 0px 10px;
+  }
+  .spinner {
+      stroke: #fff;
+      fill: #444;
+  }
+  table {
+    width: 100%; 
+    border-collapse: collapse; 
+    font-family: jura;
+    background:#F4874B;
+  }
+  th { 
+    font-size: 16px;
+    color: white; 
+    font-weight: bold;
+    padding: 8px; 
+    border: 1px solid #ccc; 
+  }
+  td{
+    font-weight: bold;
+    font-size: 14px;
+    color: white; 
+    padding: 8px; 
+    border: 1px solid #ccc;
+  }
+  tbody > tr:hover{
+    background: #A3586D;
+    cursor: pointer;
+  }
+  tr .spnTooltip {
+      z-index: 10;
+      display: none;
+      padding: 5px;
+      margin-top: -40px;
+      margin-right: 10px !important;
+      line-height: 16px;
+  }
+  tr:hover .spnTooltip{
+      display:inline;
+      position:absolute; 
+      color:#444;
+      background:#ef473a;
+  }
+  .odd{
+    background:#F3B05A;
+  }
+  .even{
+    background:#F46A4E;
+  }
+</style>
+<!-- <ion-view view-title="" class="" -->
+<ion-view class="itemView galleryView" view-title="{{item.title}}" ng-style="{ 'background-color': item.color }">
+  <ion-content ng-controller="LocationCtrl" ng-init="getLoactions()">
+    <ion-list>
+      <div class="row row-wrap row-no-padding">
+  			  <table class="table">
+            <thead>
+              <tr>
+                <!-- <th>longitute</th>
+                <th>latitute</th> -->
+                <th>Sent on</th>
+                <th>Officer Name</th>
+              </tr>
+            </thead>
+            <tbody ng-if="!locations">
+              <th colspan="3">
+                  <ion-spinner icon="lines" class="spinner-assertive"></ion-spinner><br>Fetching Locations.
+              </th>
+            </tbody>
+            <tbody ng-if="locations == ''">
+              <th colspan="3">No Locations Found</th>
+            </tbody>
+            <tbody ng-if="locations"
+              <tr ng-repeat="location in locations" on-tap="showLocation(location.longitude,location.latitude,location.full_name,location.created_on)">
+                <!-- <td>{{location.longitude}}</td>
+                <td>{{location.latitude}}</td> -->
+                <td>
+                	<span class="spnTooltip">View {{location.full_name}} Location</span>
+                	{{getDate(location.created_on)|date:'medium'}}
+                </td>
+                <td>{{location.full_name}}</td>
+              </tr>
+            </tbody>
+        </table>
+        {{locations}}
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

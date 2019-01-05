@@ -1,0 +1,20 @@
+<ion-view class="homeView" view-title="Home" hide-nav-bar="true">
+   <ion-content ng-controller="HomeController" ng-init="GetDashboardData()">
+      <div class="row row-center">
+         <div class="col col-center text-center">
+            <h2 class="animated bounceInDown icon ion-ios-information-outline"> latest News</h2>
+            <div id="container" class="animated bounceInLeft">
+               <ion-list can-swipe="true">
+                  <ion-item ng-repeat="news in PageData" class="animate-item">
+                     <a ng-href="{{news.new_link}}" target="_system">
+                         <p>{{$index+1}}. {{getDate(news.date)|date:'medium'}} <i class="icon ion-android-download"></i></p>
+                         <h2 style="margin: -15px 0px 0px 15px;">{{news.news_name.replace('_', ' ')}}</h2>
+                     </a>
+                  </ion-item>
+               </ion-list>
+            </div>
+            <button class="button button-outline button-block button-light animated bounceInUp" ui-sref="app.Depdasboard">Enter</button>
+         </div>
+      </div>
+   </ion-content>
+</ion-view>

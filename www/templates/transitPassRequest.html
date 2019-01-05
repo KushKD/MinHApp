@@ -1,0 +1,17 @@
+
+  <ion-view class="itemView" view-title="Applications" style="background-color: #FFFFFF" hide-nav-bar="false">
+    <div class="bar bar-dark">
+      <button class="button button-icon button-dark ion-navicon-round" style="font-size: 32px !important;padding: 0px !important; position: absolute;" menu-toggle="left"></button>
+      <button ng-if="userInfo.token" class="button button-icon button-clear ion-more" ng-click="openUserInfo()"></button>
+    </div>
+    <ion-content class="animated pulse" ng-controller="TransitPassRequestController">
+      <div ng-if="apps.length == 0" class="row row-center">
+        <img class="full-image" src="img/noresult.png">
+      </div>
+     
+  
+      <p>We are Here</p>
+  
+      
+    </ion-content>
+  </ion-view>

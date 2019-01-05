@@ -1,0 +1,16 @@
+<ion-modal-view class="usersModal bigModal" style="background-color:#fcb711">
+  <ion-header-bar style="background-color: #D86B67;">
+    <h1 class="title">Timeline</h1>
+    <button class="button button-dark icon ion-close-round" ng-click="closeModal();"></button>
+  </ion-header-bar>
+  <ion-content class="animated pulse">
+    <div class="list">
+      <div class="item item-thumbnail-left" ng-repeat="timeline in TimeLines">
+        <img src="img/checkList.png">
+        <p class="icon ion-ribbon-b">&nbsp;{{$index+1}}. {{timeline.role_name}}</p>
+        <p class="icon ion-chatbubble">&nbsp;{{timeline.approver_comments | uppercase}}</p>
+        <p class="icon ion-clock">&nbsp;{{getDate(timeline.created_date_time) | date:'medium'}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

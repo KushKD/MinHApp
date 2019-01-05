@@ -1,0 +1,111 @@
+<style type="text/css">
+  p,span,strong{
+    font-family: jura;
+    font-size: 14px !important;
+    font-weight:600 !important;
+   /* color:#FFFFFF !important; */
+  }
+  .item-thumbnail-left{
+    font-family: jura;
+    background: rgba(0,0,0,0.1) !important;
+  }
+  .head{
+    background-image: url('img/menulogo.png');
+    background-position: center;
+    background-size: 50% 90%;
+    background-color: rgba(255,255,100,0.6);
+    background-repeat: no-repeat;
+  }
+  .app_view{
+    cursor: pointer;
+  }
+  .menu_links{
+    cursor: pointer;
+    font-family: jura;
+    font-weight: 800
+  }
+  .menu_links:hover,.menu_links > p{
+    color: white !important;
+  }
+  .bar-dark{ 
+    background-color: rgba(150,150,50,0.6) !important;
+  }
+
+
+</style>
+<ion-view class="itemView" view-title="Applications" style="background-color: #FFFFFF" hide-nav-bar="false">
+  <div class="bar bar-dark">
+    <button class="button button-icon button-dark ion-navicon-round" style="font-size: 32px !important;padding: 0px !important; position: absolute;" menu-toggle="left"></button>
+    <button ng-if="userInfo.token" class="button button-icon button-clear ion-more" ng-click="openUserInfo()"></button>
+  </div>
+  <ion-content class="animated pulse" ng-controller="InvestorController">
+    <div ng-if="apps.length == 0" class="row row-center">
+      <img class="full-image" src="img/noresult.png">
+    </div>
+    <div ng-if="apps.length > 0" class="list">
+      
+      <!-- Adding Row For Dashboard-->
+     <div class="col" style="margin: 0,0,0,0; background: #F2F2F2" >
+        <div class="row" style="margin: 0,0,0,0; padding:0,0,0,0;">
+            <div class="card col button button-calm">
+                <div class="item item-text-wrap button button-calm">
+                  {{appStatus.I}}<br>Pending 
+                </div>
+              </div>
+
+              <div class="card col button button-energized">
+                  <div class="item item-text-wrap button button-energized">
+                    {{appStatus.P}}<br>Submitted 
+                  </div>
+                </div>
+        </div>  
+
+        <div class="row" style="margin: 0,0,0,0; padding:0,0,0,0;">
+            <div class="card col button button-balanced">
+                <div class="item item-text-wrap button button-balanced">
+                  {{appStatus.A}}<br>Approved
+                </div>
+              </div>
+
+              <div class="card col button button-assertive">
+                  <div class="item item-text-wrap button button-assertive">
+                    {{appStatus.R}}<br>Rejected
+                  </div>
+                </div>
+        </div>  
+      </div>
+      <!-- Addinng Row For Dashboard Finished-->
+
+
+      <div ng-title="View Application" ng-repeat="app in apps" class="item app_view item-thumbnail-left">
+        <img on-tap="AppView(app.field_value)" src="img/applicationForm.png" height="50px" width="50px;">
+        <div style="margin-left:-10px;">
+        <p><strong class="icon ion-gear-a" style="color: black">&nbsp;Department Name:</strong>&nbsp;{{app.dept_id}}</p>
+        <p><strong class="icon ion-pound" style="color: black">&nbsp;Application ID:</strong>&nbsp;{{app.submission_id}}</p>
+        <p><strong class="icon ion-edit" style="color: black">&nbsp;</strong>&nbsp;{{app.application_id.replace('_', ' ')}}</p>
+        <p>
+          <i ng-switch="app.status">
+            <strong class="icon ion-clipboard">&nbsp;Status:</strong>
+            <span ng-switch-when="R">
+              <a class="button button-small button-assertive" ui-sref="#">Rejected</a>
+              <a class="button button-small button-royal" ng-click="getMessage(app.submission_id);">&nbsp;View Payment Recept</a>
+            </span>
+            <span ng-switch-when="P" ><a class=" button button-small button-energized">Pending</a>
+              <a class="button button-small button-royal" ng-click="getMessage(app.submission_id);">&nbsp;View Payment Recept</a></span>
+            <span ng-switch-when="A"><a class="button button-small button-balanced"  ui-sref="#">Approved</a> 
+              <a class="button button-small button-royal" ng-click="getMessage(app.submission_id);">&nbsp;View Payment Recept</a></span>
+            <span ng-switch-default> <a class="button button-small button-calm" ui-sref="#">Incomplete</a>
+            </span>
+          </i>
+        
+        </p>
+           
+          </p>
+        <p><strong class="icon ion-clock"></strong>&nbsp;{{getDate(app.application_created_date)|date:'medium'}}</p>
+        <!-- <a on-tap="timeLineView(app.submission_id)" class="button button-balanced icon-left ion-arrow-graph-up-right">&nbsp;Timeline</a> -->
+        <!-- <a  class="button button-balanced icon-left ion-android-list">Application View</a> -->
+      </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<style type="text/css">
+	.info {
+	    font-size: 12px !important;
+	    font-family: jura;
+	    font-weight: 800;
+	}
+</style>
+<ion-popover-view class="popoverView">
+	<ion-header-bar>
+		<h1 class="title info icon ion-person"> {{userInfo.first_name}} {{userInfo.last_name}}</h1>
+	</ion-header-bar>
+	<ion-content>
+		<a class="item info item-body">
+			{{userInfo.email}}
+		</a>
+		<a class="item info item-body">
+		  {{userInfo.iuid}}
+		</a>
+		<a class="item info item-body">
+		  {{userInfo.mobile_number}}
+		</a>
+		<a class="item info item-body" ng-href="tel:+91 9736567617">
+		  Helpline
+		</a>
+		<a class="item info item-body" target="_system" ng-href="mailto:dirindus-hp@nic.in">
+		  Send Query
+		</a>
+		<a class="item info item-body" ng-if="userInfo.token;" ng-href="" ng-click="logout()">
+		  &nbsp;Logout
+		</a>
+	</ion-content>
+</ion-popover-view>

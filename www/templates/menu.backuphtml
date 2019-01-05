@@ -1,0 +1,68 @@
+<style type="text/css">
+  .head{
+    background-image: url('img/menulogo.png');
+    background-position: center;
+    background-size: 50% 90%;
+    background-color: rgba(255,255,100,0.6);
+    background-repeat: no-repeat;
+  }
+  .menu_links{
+    cursor: pointer;
+    font-family: jura;
+    font-weight: 800
+  }
+  .menu_links:hover,.bold:hover,.menu_links:hover,.menu_links > p:hover{
+    color: #444 !important;
+  }
+  .bar-dark{ 
+    background-color: rgba(150,150,50,0.6) !important;
+  }
+  .menu_links,.bold{
+    color: white !important;
+  }
+  .logout{
+    background: #ef473a !important;
+    color: white;   
+  }
+</style>
+<ion-side-menus enable-menu-with-back-views="false">
+   <ion-side-menu-content>
+      <ion-nav-bar class="bar-dark">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon-round" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+          <button ng-if="userInfo.token" class="button button-icon button-clear ion-more" ng-click="openPopover($event)"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="viewContent" animation="slide-left-right"></ion-nav-view>
+   </ion-side-menu-content>
+   <ion-side-menu side="left" class="menu">
+      <ion-header-bar class="head" ui-sref="app.landing" menu-close nav-direction="enter" nav-clear>
+      </ion-header-bar>
+      <ion-content class="has-header">
+         <ion-list>
+             <ion-item menu-close nav-direction="enter" ui-sref="app.landing" 
+                       class="menu_links item item-icon-right animated bounceInUp">
+                <i class="icon ion-android-home"></i>
+                <p class="bold">Home</p>
+             </ion-item>
+
+             <ion-item ng-repeat="item in items" 
+                       menu-close nav-direction="enter" 
+                       class="menu_links item item-icon-right animated bounceInUp"
+                       ng-style="{ 'background-color' : item.color }"
+                       on-tap="openItem(item)">
+                <i class="icon {{item.icon}}"></i>
+                <p class="bold">{{ item.title }}</p>
+             </ion-item>
+             <ion-item ng-if="userInfo.token;" menu-close nav-direction="enter" 
+                       class="menu_links logout item item-icon-right animated bounceInUp" ng-click="logout()">
+                <i class="icon ion-log-out"></i>
+                <p class="bold">Logout</p>
+             </ion-item>
+         </ion-list>
+      </ion-content>
+   </ion-side-menu>
+</ion-side-menus>

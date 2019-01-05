@@ -1,0 +1,463 @@
+<style type="text/css">
+  label,select{
+  font-size: 14px !important;
+  font-weight: bold;
+  color:#444 !important;    
+  }input{
+  font-size: 14px !important;
+  color:#444 !important;
+  width: 100% !important;
+  }
+
+  .error_div{
+    background-color: #e6e6e6;
+  }
+  input[type=text],select{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #3C8DBC;
+  }
+  input[type=tel] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #3C8DBC;
+  }
+  .error_div{color:red!important;font-weight:800}
+  .item-checkbox {border: none !important;padding: 0px 50px;
+  margin: -15px 0 0 -10px;}
+  li {
+  margin: 5px 10px;
+  font-size: 12px;
+  text-align: start;
+  font-weight: 600;
+  list-style-type: initial;
+  }
+</style>
+<ion-view class="itemView usersModal bigModal" view-title="Generate M-Form" style="background-color: #3C8DBC" >
+  <ion-content class="animated zoomInLeft">
+     <!-- Form Informaition -->
+     <!--MForm Details Starts-->
+     <div class="card" style="background-color: #E6E6E6; border-top: red solid 5px; margin: 10px 10px;">
+        <div class = "row">
+           <div class = "col-50">Transit Pass Id:</div>
+           <div class = "col-50" style=" text-align: center;"> {{mform_Data.app_sub_id}}</div>
+        </div>
+        <hr>
+        <div class = "row">
+           <div class = "col-50">Application Number:</div>
+           <div class = "col-50" style=" text-align: center;">{{mform_Data.mform_num}}</div>
+        </div>
+        <hr>
+        <div class = "row">
+           <div class = "col-50">Total Number of Forms Requested:</div>
+           <div class = "col-50" style=" text-align: center;">{{mform_Data.mform_total_number}}</div>
+        </div>
+        <hr>
+        <div class = "row">
+           <div class = "col-50"> Total Quantity Requested (In Metric Tones)</div>
+           <div class = "col-50" style=" text-align: center;">{{mform_Data.mform_total_quantity}}</div>
+        </div>
+        <hr>
+        <div class = "row">
+           <div class = "col-50"> Total Forms Consumed</div>
+           <div class = "col-50" style=" text-align: center;">{{mform_Data.app_sub_id}}</div>
+        </div>
+        <hr>
+        <div class = "row">
+           <div class = "col-50"> Total Quanitity Used(in Metric Tones)</div>
+           <div class = "col-50" style=" text-align: center;">{{mform_Data.app_sub_id}}</div>
+        </div>
+        <hr>
+        <div class = "row">
+           <div class = "col-50"> Form Type</div>
+           <div class = "col-50" style=" text-align: center;">{{mform_Data.mform_type}}</div>
+        </div>
+     </div>
+     <!--MForm Details Ends-->
+     <div class="card" style="background-color: #E6E6E6; border-top: red solid 5px; margin: 10px 10px;">
+        <form name="myForm" novalidate>
+           <!-- <label ng-if="label != 'M-Form Type' && label !='Master_ID'" ng-repeat="(label,value) in TransitDetail" class="item item-body">
+           {{label}}:<br>
+           {{value ? value : '0'}}
+           </label> -->
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Name of Contractor/Lease/Permit/Permission Holder: </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                 <input name="name_of_contractor" ng-model="formData.name_of_contractor" 
+                    ng-minlength="4" ng-maxlength="20" ng-pattern="/^[A-z][A-z ]*$/" required type="text">
+                 
+              </div>
+           </div>
+           <div class="row" style="background-color: #E6E6E6">
+              <label class="error_div " ng-show="myForm.name_of_contractor.$error.required && myForm.name_of_contractor.$dirty">
+              * This field is required.
+              </label>
+              <label class="error_div " ng-show="!myForm.name_of_contractor.$error.minLength && !myForm.name_of_contractor.$error.maxLength && 
+                 myForm.name_of_contractor.$error.pattern && myForm.name_of_contractor.$dirty">
+              Use letters Only.
+              </label>
+              <label class="error_div " ng-show="!myForm.name_of_contractor.$error.required && (myForm.name_of_contractor.$error.minlength ||
+                 myForm.name_of_contractor.$error.maxlength) && myForm.name_of_contractor.$dirty">
+              Name should be between 4 and 20 characters.
+              </label>
+           </div>
+           <!--Row Ends -->
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Location Of Mine:  </label> 
+              </div>
+           </div>
+           <div class="row">
+              <div class="col">
+                 <input name="location_of_mine" ng-model="formData.location_of_mine" 
+                    ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z ]*$/" type="text">
+                
+              </div>
+           </div>
+           <div class="row" style="background-color: #E6E6E6">
+              <label class="error_div item item-body" ng-show="myForm.location_of_mine.$error.required && myForm.location_of_mine.$dirty">
+                  * This field is required.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.location_of_mine.$error.minLength && !myForm.location_of_mine.$error.maxLength && 
+                     myForm.location_of_mine.$error.pattern && myForm.location_of_mine.$dirty">
+                  Use letters Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.location_of_mine.$error.required && (myForm.location_of_mine.$error.minlength ||
+                     myForm.location_of_mine.$error.maxlength) && myForm.location_of_mine.$dirty">
+                  Location be between 2 and 20 characters.
+                  </label>
+           </div>
+           <!--Row Ends -->
+
+
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Place Where Mineral Is Being Sent: </label> 
+              </div>
+           </div>
+           <div class="row">
+              <div class="col">
+                 <input name="place_where_mineral_is_being_sent" ng-model="formData.place_where_mineral_is_being_sent"
+                    ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z ]*$/" type="text">
+                
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.place_where_mineral_is_being_sent.$error.required && myForm.place_where_mineral_is_being_sent.$dirty">
+                  * This field is required.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.place_where_mineral_is_being_sent.$error.minLength && !myForm.place_where_mineral_is_being_sent.$error.maxLength && 
+                     myForm.place_where_mineral_is_being_sent.$error.pattern && myForm.place_where_mineral_is_being_sent.$dirty">
+                  Use letters Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.place_where_mineral_is_being_sent.$error.required && (myForm.place_where_mineral_is_being_sent.$error.minlength ||
+                     myForm.place_where_mineral_is_being_sent.$error.maxlength) && myForm.place_where_mineral_is_being_sent.$dirty">
+                  Place Name should be between 4 and 20 characters.
+                  </label>
+           </div>
+           <!--Row Ends -->
+
+
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 To whom Mineral is, being dispatched:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                 <input name="name_of_party" ng-model="formData.name_of_party"
+                    ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z ]*$/" type="text">
+                 
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.name_of_party.$error.required && myForm.name_of_party.$dirty">
+                  * This field is required.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.name_of_party.$error.minLength && !myForm.name_of_party.$error.maxLength && 
+                     myForm.name_of_party.$error.pattern && myForm.name_of_party.$dirty">
+                  Use letters Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.name_of_party.$error.required && (myForm.name_of_party.$error.minlength ||
+                     myForm.name_of_party.$error.maxlength) && myForm.name_of_party.$dirty">
+                  Name should be between 4 and 20 characters.
+                  </label>
+           </div>
+           <!--Row Ends -->
+
+
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Name Of Mineral: </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                 <input name="name_of_mineral" ng-model="formData.name_of_mineral"  ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z ]*$/" type="text">
+                
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.name_of_mineral.$error.required && myForm.name_of_mineral.$dirty">
+                  * This field is required.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.name_of_mineral.$error.minLength && !myForm.name_of_mineral.$error.maxLength && 
+                     myForm.name_of_mineral.$error.pattern && myForm.name_of_mineral.$dirty">
+                  Use letters Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.name_of_mineral.$error.required && (myForm.name_of_mineral.$error.minlength ||
+                     myForm.name_of_mineral.$error.maxlength) && myForm.name_of_mineral.$dirty">
+                  Name should be between 4 and 20 characters.
+                  </label>
+           </div>
+           <!--Row Ends -->
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Mode Of Transport </label>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col">
+                 <select name="mode_of_transport" ng-model="formData.mode_of_transport">
+                    <option value="">--please select--</option>
+                    <option value="1">Mule</option>
+                    <option value="2">Truck</option>
+                    <option value="3">Tipper</option>
+                    <option value="4">Tractor</option>
+                 </select>
+                
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.mode_of_transport.$invalid && !myForm.mode_of_transport.$pristine">
+                  *&nbsp;This field is required
+                  </label>
+           </div>
+           <!--Row Ends -->
+           <div class="row">
+              <div class="col-5">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Vehicle Number:
+                 </label>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col">
+                 <input name="vehicle_number" ng-model="formData.vehicle_number" 
+                    ng-minlength="5" ng-pattern="/^[A-z A-z 0-9]*$/" required  type="text" />
+               
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.vehicle_number.$error.required && myForm.vehicle_number.$dirty">
+                  * This field is required
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.vehicle_number.$error.minLength && !myForm.vehicle_number.$error.maxLength && 
+                     myForm.vehicle_number.$error.pattern && myForm.vehicle_number.$dirty">
+                  Use Alphabets &amp; Digits Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.vehicle_number.$error.required && (myForm.vehicle_number.$error.minlength ||
+                     myForm.vehicle_number.$error.maxlength) && myForm.vehicle_number.$dirty">
+                  Number should be minimum 5 characters long.
+                  </label>
+           </div>
+           <!--Row Ends -->
+
+
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Driver Mobile Number: </label>
+              </div>
+           </div>
+              <div class="row">
+                  <div class="col">
+                 <input name="driver_mobile_number" ng-model="formData.driver_mobile_number" 
+                    ng-minlength="10" ng-maxlength="11" ng-pattern="/^[0-9]*$/" required  type="tel" />
+                
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.driver_mobile_number.$error.required && myForm.driver_mobile_number.$dirty">
+                  * This field is required
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.driver_mobile_number.$error.minLength && !myForm.driver_mobile_number.$error.maxLength && 
+                     myForm.driver_mobile_number.$error.pattern && myForm.driver_mobile_number.$dirty">
+                  Use Digits Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.driver_mobile_number.$error.required && (myForm.driver_mobile_number.$error.minlength ||
+                     myForm.driver_mobile_number.$error.maxlength) && myForm.driver_mobile_number.$dirty">
+                  Number should be minimum 5 characters long.
+                  </label>
+           </div>
+           <!--Row Ends -->
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Driver Full Name:</label>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col">
+                 <input name="driver_full_name" ng-model="formData.driver_full_name" ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z ]*$/" type="text">
+                
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.driver_full_name.$error.required && myForm.driver_full_name.$dirty">
+                  * This field is required.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.driver_full_name.$error.minLength && !myForm.driver_full_name.$error.maxLength && 
+                     myForm.driver_full_name.$error.pattern && myForm.driver_full_name.$dirty">
+                  Use letters Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.driver_full_name.$error.required && (myForm.driver_full_name.$error.minlength ||
+                     myForm.driver_full_name.$error.maxlength) && myForm.driver_full_name.$dirty">
+                  Name should be between 4 and 20 characters.
+                  </label>
+           </div>
+           <!--Row Ends -->
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Quantity Carrying in(Metric Tons):</label>
+              </div>
+           </div>
+           <div class="row" >
+              <div class="col">
+                 <input name="quantity_carrying" ng-model="formData.quantity_carrying" ng-pattern="/^[0-9]*$/" required  type="tel" />
+                
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.quantity_carrying.$error.required && myForm.quantity_carrying.$dirty">
+                  * This field is required
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.quantity_carrying.$error.minLength && !myForm.quantity_carrying.$error.maxLength && 
+                     myForm.quantity_carrying.$error.pattern && myForm.quantity_carrying.$dirty">
+                  Use Digits Only.
+                  </label>
+           </div>
+           <!--Row Ends -->
+
+
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Quantity Carrying Unit:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                 <input name="quantity_unit" ng-model="formData.quantity_unit" ng-pattern="^[A-Za-z0-9]*$" required  type="text" />
+                
+              </div>
+
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.quantity_unit.$error.required && myForm.quantity_unit.$dirty">
+                  * This field is required
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.quantity_unit.$error.minLength && !myForm.quantity_unit.$error.maxLength && 
+                     myForm.quantity_unit.$error.pattern && myForm.quantity_unit.$dirty">
+                  Use Alphabets Only.
+                  </label>
+           </div>
+           <!--Row Ends -->
+           <div class="row">
+              <div class="col">
+                 <label style="font-weight: normal; display:block; padding-top: 5px; font-size: 16px; text-align: left"  >
+                 Name Of Owner Of Vehicle:  </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                 <input name="name_of_owner_of_vehicle" ng-model="formData.name_of_owner_of_vehicle" 
+                    ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z ]*$/" type="text">
+                
+              </div>
+           </div>
+           <div class="row">
+              <label class="error_div item item-body" ng-show="myForm.name_of_owner_of_vehicle.$error.required && myForm.name_of_owner_of_vehicle.$dirty">
+                  * This field is required.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.name_of_owner_of_vehicle.$error.minLength && !myForm.name_of_owner_of_vehicle.$error.maxLength && 
+                     myForm.name_of_owner_of_vehicle.$error.pattern && myForm.name_of_owner_of_vehicle.$dirty">
+                  Use letters Only.
+                  </label>
+                  <label class="error_div item item-body" ng-show="!myForm.name_of_owner_of_vehicle.$error.required && (myForm.name_of_owner_of_vehicle.$error.minlength ||
+                     myForm.name_of_owner_of_vehicle.$error.maxlength) && myForm.name_of_owner_of_vehicle.$dirty">
+                  Name should be between 4 and 20 characters.
+                  </label>
+           </div>
+           <!--Row Ends -->
+           <br>
+           <!-- <label ng-if="label == 'M-Form Type'" ng-repeat="(label, value) in mform_Data" class="item item-body" ng-class="value=='' ? 'item-select' : ''">
+              {{label}}<br>
+              <input ng-if="value!=''" readonly="readonly" name="mform_type" ng-value="value" ng-model="formData.mform_type" maxlength="2" type="text">
+              <select ng-if="value==''" name="mform_type" ng-model="formData.mform_type">
+                 <option value="">--please select--</option>
+                 <option value="W">W</option>
+                 <option value="X">X</option>
+                 <option value="WX">WX</option>
+              </select>
+           </label> -->
+           <label class="error_div item item-body" ng-show="myForm.mform_type.$invalid && !myForm.mform_type.$pristine">
+           *&nbsp;This field is required
+           </label>
+           <div >
+              <div class="item item-body">
+                 <p>
+                 <ul class="list">
+                    <b>Terms and Conditions:</b><br>
+                    <li>All columns of Form-‘<b>{{mform_Data.mform_type}}</b>’ should be properly filled in especially serial number 11 and 12 pertaining to date and time of Issuance of Form-‘W’ from Mining site.
+                    </li>
+                    <li>This Form ‘<b>{{mform_Data.mform_type}}</b>’ is valid for one trip only.</li>
+                    <li>This Form ‘<b>{{mform_Data.mform_type}}</b>’ is valid only if it has the seal and signature of the issuing authority.</li>
+                    <li>Any person found to have contravened the above shall, on conviction, be punishable with imprisonment of either description for term which may extend upto two years or with fine which may extend upto 25,000/- rupees or both.</li>
+                    <li>Under Rule 21(4) of Mines and Minerals (Development &amp; Regulation) Act, 1957, any type of vehicle, involved in carrying/transporting the material without Form ‘<b>{{mform_Data.mform_type}}</b>’ shall be seized and such vehicle shall be impounded and material shall be auctioned.</li>
+                 </ul>
+                 </p>
+              </div>
+           </div>
+           <div class="row">
+              <label>
+              <input type="checkbox" name="agree_terms_condition" required ng-model="formData.agree_terms_condition"> &nbsp; I Agree
+              </label>
+              <label class="error_div item item-body" ng-show="myForm.agree_terms_condition.$error.required && myForm.agree_terms_condition.$dirty">
+              * This field is required.
+              </label>
+              <input name="mform_id" ng-model="formData.mform_id" type="hidden">
+              <input name="mform_number" ng-model="formData.mform_number" type="hidden">
+              <input name="mform_type" ng-model="formData.mform_number" type="hidden">
+               <label class=" responsive-sm item">
+                 <div class="error_div item item-body" ng-if="FormError">
+                    <ol>
+                       <li ng-repeat="error in FormError">{{error}}</li>
+                    </ol>
+                 </div>
+                   </label>  
+           </div>
+           <div class="row">
+              <button type="submit" class="col button button-block button-balanced" ng-disabled="myForm.$invalid" ng-click="GenerateMform(formData)">Register</button>
+           </div>
+        </form>
+     </div>
+  </ion-content>
+</ion-view>

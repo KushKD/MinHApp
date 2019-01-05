@@ -1,0 +1,63 @@
+
+
+
+<ion-view class="itemView" view-title="Generate Transit Pass" style="background-color: #FFFFFF" hide-nav-bar="false">
+    <div class="bar bar-dark">
+      <button class="button button-icon button-dark ion-navicon-round" style="font-size: 32px !important;padding: 0px !important; position: absolute;" menu-toggle="left"></button>
+      <button ng-if="userInfo.token" class="button button-icon button-clear ion-more" ng-click="openUserInfo()"></button>
+    </div>
+    <ion-content class="animated pulse" ng-controller="GenerateTransitPass" style="background-color: #F2F2F2; height: 100%;">
+      <!-- <div ng-if="apps.length == 0" class="row row-center">
+        <img class="full-image" src="img/noresult.png">
+      </div> -->
+
+     
+       
+      <label class="item  text-center" style="background-color: #3C8DBC; font-weight: bold; color: #FFFFFF;">Transit Pass Generation<br></label>
+     
+
+      <form class="padding" name="myForm" novalidate>
+
+        <div class="list padding has-header" style="border: #3C8DBC solid 2px;">
+         
+          <label class="item item-input item-stacked-label col">
+              <span class="col text-center" style="font-weight: bold; color: #3C8DBC">Please Select Your Transit Pass Application </span>
+                <select class="item item-select col" style="font-weight: bold; color: #3C8DBC" name="mode_of_transport"  ng-model="formData.SubmissionId">
+                  <option value="">--please select Application--</option>
+                  <option  value={{SubmissionId}}>Current Transit Pass(ID: {{SubmissionId}})</option>
+                </select>
+          </label>
+
+        
+          <button  type="submit" class="button button-positive col" style="margin-top: 10px;" ng-disabled="myForm.$invalid" ng-click="submitSubmissionId(formData)">
+           Submit
+          </button>
+    </div>
+
+    </form>
+
+    <div class="list padding has-header">
+      <b>  Instructions: </b>
+        <ol class="list"> 
+            <li class="item item-text-wrap">
+                Please Select your transit Pass.
+            </li>
+            <li class="item item-text-wrap">
+                Current Transit Pass is the latest approved transit pass.
+            </li>
+            <li class="item item-text-wrap">
+                Balance Transit Pass is the previous month's approved transit pass('WX').
+            </li>
+            <li class="item item-text-wrap">
+                Carry forward balance from previous 'WX' form is the balance of 'X' form only.
+            </li>
+            <li class="item item-text-wrap">
+                Only 'X' Form can be generated from Balance Transit Pass.
+            </li>
+          </ol>
+      </div>
+    </div>
+     
+
+      </ion-content>
+      </ion-view>

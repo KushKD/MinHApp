@@ -1,0 +1,89 @@
+<style type="text/css">
+  .head{
+    background-image: url('img/menulogo.png');
+    background-position: center;
+    background-size: 50% 90%;
+    background-color: rgba(255,255,100,0.6);
+    background-repeat: no-repeat;
+  }
+  .menu_links{
+    cursor: pointer;
+    font-family: jura;
+    font-weight: 800
+  }
+  .menu_links:hover,.menu_links > p{
+    color: white !important;
+  }
+  .bar-dark{ 
+    background-color: rgba(150,150,50,0.6) !important;
+  }
+</style>
+<ion-side-menus enable-menu-with-back-views="true">
+   <ion-side-menu-content>
+      <ion-nav-bar class="bar-dark">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon-round" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+          <button ng-if="userInfo.token" class="button button-icon button-clear ion-more" ng-click="openUserInfo()"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="viewContent" animation="slide-left-right"></ion-nav-view>
+   </ion-side-menu-content>
+   <ion-side-menu side="left" class="menu">
+      <ion-header-bar class="head" ui-sref="app.landing" menu-close nav-direction="enter" nav-clear></ion-header-bar>
+      <ion-content class="has-header">
+         <ion-list>
+             <ion-item nav-clear menu-close ui-sref="app.landing">
+                 <i class="icon ion-android-home"></i>&nbsp;Home
+             </ion-item>
+             <ion-item ng-if="!userInfo.token" nav-clear menu-close ui-sref="app.investorLogin">
+                 <i class="icon ion-log-in"></i>&nbsp;Investor Login
+             </ion-item>
+             <ion-item ng-if="!userInfo.token" nav-clear menu-close ui-sref="app.departmentLogin">
+                 <i class="icon ion-log-in"></i>&nbsp;Department Login
+             </ion-item>
+             <!-- <ion-item ng-if="userInfo.role_id == 0" nav-clear menu-close ui-sref="app.mFormView">
+                 <i class="icon ion-document-text"></i>&nbsp;Create M-Form 
+             </ion-item> -->
+
+             <ion-item ng-if="userInfo.role_id == 0" nav-clear menu-close ui-sref="app.invDashboard">
+                 <i class="icon ion-document-text"></i>&nbsp; Investor Dashboard 
+                </ion-item>
+
+                <!-- <ion-item ng-if="userInfo.role_id == 0" nav-clear menu-close ui-sref="app.transitPassRequest">
+                        <i class="icon ion-document-text"></i>&nbsp; Transit Pass Request 
+                       </ion-item> -->
+
+                       <ion-item ng-if="userInfo.role_id == 0" nav-clear menu-close ui-sref="app.generateTransitPass">
+                            <i class="icon ion-document-text"></i>&nbsp; Generate Transit Pass
+                           </ion-item>
+
+             <ion-item ng-if="userInfo.role_id == 4 || userInfo.role_id == 8" nav-clear menu-close ui-sref="app.Depdasboard">
+                 <i class="icon ion-document-text"></i>&nbsp; Dashboard
+             </ion-item>
+
+             <ion-item nav-clear menu-close ng-href="tel:+91 9736567617">
+                 <i class="icon ion-ios-telephone"></i>&nbsp; Helpline
+             </ion-item>
+
+             <ion-item nav-clear menu-close ng-href="" ng-click="GetContactDetail()">
+                 <i class="icon ion-android-contacts"></i>&nbsp;Contacts List
+             </ion-item>
+
+             <ion-item nav-clear menu-close ng-href="" ng-click="openBrowser()">
+                 <i class="icon ion-earth"></i>&nbsp;Visit Website
+             </ion-item>
+
+             <ion-item nav-clear menu-close target="_system" ng-href="mailto:dirindus-hp@nic.in">
+                 <i class="icon ion-email"></i>&nbsp;Send Query
+             </ion-item>
+
+             <ion-item ng-if="userInfo.token;" nav-clear menu-close ng-href="" ng-click="logout()">
+                 <i class="icon ion-log-out"></i>&nbsp;Logout
+             </ion-item>
+         </ion-list>
+      </ion-content>
+   </ion-side-menu>
+</ion-side-menus>

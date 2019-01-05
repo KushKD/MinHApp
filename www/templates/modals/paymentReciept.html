@@ -1,0 +1,33 @@
+<style>
+/* 
+PreDefined Formatting 
+*/
+p{
+    width: 100%;
+    text-align: center;
+   
+}
+table{
+  width: 100%;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+span{
+  font-weight: bold;
+}
+</style>
+
+
+<ion-modal-view class="usersModal bigModal" style="background-color:#FFFFFF">
+    <ion-header-bar style="background-color: #D86B67;">
+      <h1 class="title">Receipt</h1>
+      <button class="button button-dark icon ion-close-round" ng-click="closeModal();"></button>
+    </ion-header-bar>
+    <ion-content class="animated pulse">
+      <div class="list">
+        <ng-bind-html ng-bind-html='TimeLines'></ng-bind-html>
+      </div>
+    </ion-content>
+  </ion-modal-view>

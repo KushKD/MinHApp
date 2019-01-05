@@ -1,0 +1,176 @@
+<style type="text/css">
+   button,input,.title{
+        font-family: jura;
+        font-size: 14px !important;
+        font-weight:800 !important;
+        color:black !important;
+   }
+   .item,.item-body{
+        padding: 0 0 10px 10px !important;
+   }
+   .error_div,.required{
+        font-family: jura;
+        font-weight:800 !important;
+        color: red;
+        padding: 0 !important;
+   }
+   input[type=date],input[type=text] {
+     background-color: #FFFFFF;
+     height: 35px;
+     margin: 0 auto;
+     width: 100%;
+     font-family: jura;
+     font-size: 18px;
+     font-weight: bold;
+     text-transform: capitalize;
+     outline: none;
+     border: none;
+     border-radius: 3px;
+     padding: 0 3px;
+   }
+</style>
+<ion-view class="itemView" view-title="Generate M-Form" style="background-color: #E47500">
+    <ion-content class="animated pulse">
+        <div class="list">
+            <form name="myForm" novalidate>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Date of Issue&nbsp;<i class="required">*</i></span><br>
+                     <input type="text" onfocusIn="(this.type='date')" name="issue_date" ng-model="formData.issue_date" required placeholder="*Date of Issue YYYY/MM/DD">
+                     <span class="error_div" ng-show="myForm.issue_date.$invalid && !myForm.issue_date.$pristine">*&nbsp;Date of Issue is required</span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Date of Expiry&nbsp;<i class="required">*</i></span><br>
+                     <input type="text" onfocus="(this.type='date')" name="expiry_date" ng-model="formData.expiry_date" required placeholder="*Date of Expiry YYYY/MM/DD">
+                     <span class="error_div" ng-show="myForm.expiry_date.$invalid && !myForm.expiry_date.$pristine">*&nbsp;Date of Expiry is required</span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Name of Contractor/Lessee/Permit or Permission holder&nbsp;<i class="required">*</i></span><br>
+                     <input type="text" name="contractor_name" ng-model="formData.contractor_name" required placeholder="*Name of Contractor">
+                     <span  class="error_div" ng-show="myForm.contractor_name.$invalid && !myForm.contractor_name.$pristine">
+                     *&nbsp;Name of Contractor/Lessee/Permit or Permission holder is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Name and Locationof Mine&nbsp;<i class="required">*</i></span><br>
+                     <input type="text" name="mine_name_location" ng-model="formData.mine_name_location" required placeholder="*Name and Location of Mine">
+                     <span  class="error_div" ng-show="myForm.mine_name_location.$invalid && !myForm.mine_name_location.$pristine">
+                     *&nbsp;Name and Locationof Mine is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Place Where Mineral is being sent&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="mineral_sent_place" ng-model="formData.mineral_sent_place" required placeholder="Place Where Mineral is being sent">
+                     <span class="error_div" ng-show="myForm.mineral_sent_place.$invalid && !myForm.mineral_sent_place.$pristine">
+                     *&nbsp;Place Where Mineral is being sent is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Name of person/party to whom Mineral is, being dispatched&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="name_to_whom_dispatched" ng-model="formData.name_to_whom_dispatched" required placeholder="Name of person to whom Mineral is, being dispatched">
+                     <span ng-show="myForm.name_to_whom_dispatched.$invalid && !myForm.name_to_whom_dispatched.$pristine" class="error_div">
+                     *&nbsp;Name of person/party to whom Mineral is, being dispatched is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Name of Mineral&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="mineral_name" ng-model="formData.mineral_name" required placeholder="Name of Mineral">
+                     <span ng-show="myForm.mineral_name.$invalid && !myForm.mineral_name.$pristine" class="error_div">
+                     *&nbsp;Name of Mineral is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Volume/Quantity of Mineral&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="vol_qty_mineral" ng-model="formData.vol_qty_mineral" required placeholder="Volume/Quantity of Mineral">
+                     <span ng-show="myForm.vol_qty_mineral.$invalid && !myForm.vol_qty_mineral.$pristine" class="error_div">
+                     *&nbsp;Volume/Quantity of Mineral is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Mode of Transport&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="transport_mode" ng-model="formData.transport_mode" required placeholder="Mode of Transport">
+                     <span ng-show="myForm.transport_mode.$invalid && !myForm.transport_mode.$pristine" class="error_div">
+                     *&nbsp;Mode of Transport is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Vehicle Number&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="vehicle_number" ng-model="formData.vehicle_number" required placeholder="Vehicle Number">
+                     <span ng-show="myForm.vehicle_number.$invalid && !myForm.vehicle_number.$pristine" class="error_div">
+                     *&nbsp;Vehicle Number is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Name of vehicle owner&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="vehicle_owner" ng-model="formData.vehicle_owner" required placeholder="Name of vehicle owner">
+                     <span ng-show="myForm.vehicle_owner.$invalid && !myForm.vehicle_owner.$pristine" class="error_div">
+                     *&nbsp;Name of vehicle owner is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Name of Driver&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="driver_name" ng-model="formData.driver_name" required placeholder="Name of Driver">
+                     <span ng-show="myForm.driver_name.$invalid && !myForm.driver_name.$pristine" class="error_div">
+                     *&nbsp;Name of Driver is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Page No. of the Production Register at which Transit Pass (Form-'W') has been entered&nbsp;<i class="required">*</i></span>
+                     <input type="text" name="production_reg_page_number" ng-model="formData.production_reg_page_number" required placeholder="Production Register Page No.">
+                     <span ng-show="myForm.production_reg_page_number.$invalid && !myForm.production_reg_page_number.$pristine" class="error_div">
+                     *&nbsp;Page No. of the Production Register at which Transit Pass (Form-'W') has been entered is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Date of Dispatch&nbsp;<i class="required">*</i></span>
+                     <input type="text" onfocusIn="(this.type='date')" name="dispatch_date" ng-model="formData.dispatch_date" required placeholder="Date of Dispatch">
+                     <span ng-show="myForm.dispatch_date.$invalid && !myForm.dispatch_date.$pristine" class="error_div">
+                     *&nbsp;Date of Dispatch is required
+                     </span>
+                  </p>
+               </div>
+               <div class="item item-body">
+                  <p class="subdued">
+                     <span class="title">Time of Dispatch&nbsp;<i class="required">*</i></span>
+                     <input type="text" onfocusIn="(this.type='date')" name="dispatch_time" ng-model="formData.dispatch_time" required placeholder="Time of Dispatch">
+                     <span ng-show="myForm.dispatch_time.$invalid && !myForm.dispatch_time.$pristine" class="error_div">
+                     *&nbsp;Time of Dispatch is required
+                     </span>
+                  </p>
+               </div>
+               <div class="row responsive-sm item">
+                    <span ng-show="myForm.$invalid" class="error_div"><br>*&nbsp;Please enter all required fields.</span><br>
+                    <button type="submit" class="button button-block button-balanced" ng-disabled="myForm.$invalid" ng-click="submit(formData)">
+                        Submit
+                    </button>
+               </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

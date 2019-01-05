@@ -1,0 +1,199 @@
+<style type="text/css">
+  span{
+    font-size: 14px !important;
+    font-weight:800 !important;
+    color:#FFF !important;
+  }
+  .item-body {
+    padding: 0px 0px 10px 10px;
+    background: rgba(0,0,0,0.2) !important;
+  }
+  .list{
+    margin-bottom:20px !important; 
+  }
+</style>
+<ion-modal-view class="usersModal bigModal" style="background-color:#fcb711">
+  <ion-header-bar style="background-color: #D86B67;">
+    <h1 class="title">Application View</h1>
+    <button class="button button-dark icon ion-close-round" ng-click="closeModal();"></button>
+  </ion-header-bar>
+  <ion-content class="animated pulse">
+    <div class="list">
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">IUID</span><br>
+          {{data.IUID}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Firm Type</span><br>
+          {{data.firm_type}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Company Name</span><br>
+          {{data.company_name}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Nationality</span><br>
+          {{data.individual_nationality}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Nature of Business</span><br>
+          {{data.nature_individual_business}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Company Address</span><br>
+          {{data.company_address}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Nature of Application</span><br>
+          {{data.application_nature}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Application applied for</span><br>
+          {{data.application_for_mining_lease}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Minor Minerals</span><br>
+          {{data.minor_minerals}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Raised Application Nature</span><br>
+          {{data.application_nature_raised}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Mining Period</span><br>
+          {{data.mining_period}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Minor Mineral Qty</span><br>
+          {{data.quantity_of_minor_mineral}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applied Area Jurisdiction</span><br>
+          {{data.applied_area_jurisdiction}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Under Quarry Leases</span><br>
+          {{data.under_quarry_leases}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Minerals Utilised</span><br>
+          {{data.minerals_utilised}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Other Applicant Particulars</span><br>
+          {{data.applicant_other_particulars}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Email</span><br>
+          {{data.applicant_email}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Fullname</span><br>
+          {{data.applicant_fullname}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Pan Number</span><br>
+          {{data.applicant_pan_number}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Village Town</span><br>
+          {{data.applicant_village_town}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Zip Code</span><br>
+          {{data.applicant_zipcode}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Tehsil</span><br>
+          {{data.applicant_tehsil}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant District</span><br>
+          {{data.applicant_district}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Forest Range Name</span><br>
+          {{data.forest_range_name}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Forest Working Cycle</span><br>
+          {{data.forest_working_circle}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant khasra</span><br>
+          {{data.applicant_khasra}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Mauza Mohal</span><br>
+          {{data.applicant_mauza_mohal}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Applicant Area Hectare</span><br>
+          {{data.applicant_area_hect}}
+        </p>
+      </div>
+      <div class="item item-body">
+        <p class="subdued">
+          <span class="title">Area Description</span><br>
+          {{data.area_description}}
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+

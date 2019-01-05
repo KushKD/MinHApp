@@ -1,0 +1,48 @@
+<style type="text/css">
+	.list .item.item-accordion {padding-top: 0;padding-bottom: 0;transition: 0.09s all linear;}
+	.list .item.item-accordion.ng-hide {line-height: 0px;}
+	.list .item.item-accordion.ng-hide-add,.list .item.item-accordion.ng-hide-remove {display: block !important;}
+	.faq_head{background-color: rgba(0,0,0,0.4) !important; padding: 10px 33px 10px 10px}
+	.faq_ans{background-color: rgba(0,0,0,0.2) !important;padding:0px !important}
+	.faq_head,.faq_ans{cursor: pointer;color: white;font-weight: 600;font-family: inherit;text-align: left;font-size: 16px !important}
+	.faq_head>p,.faq_ans>p{color: white;font-weight: lighter;font-family: inherit;text-align: left;font-size: 16px !important}
+	.ion-chevron-up,.ion-chevron-down{ font-size: 14px !important}
+	.contact_list ion-content, ion-header-bar{background:rgba(150,150,50,0.6) !important; }
+	.item-body {height: auto !important;}
+	.cont .item,.item-divider {font-size:14px !important;font-weight: 800 !important; color: #888 !important; padding: 5px 10px !important }
+</style>
+<ion-modal-view class="usersModal contact_list bigModal">
+	<ion-header-bar>
+		<h1 class="title"><i class="icon ion-android-contacts"></i>&nbsp;Contact List</h1>
+		<button class="button button-dark icon ion-close-round" ng-click="closeModal();"></button>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list can-swipe="true">
+			<ion-list>
+				<ion-item>
+					<label class="item item-input">
+						<i class="icon ion-search placeholder-icon"></i>
+						<input type="text" ng-model="input.filterUser" placeholder="Search">
+					</label>
+				</ion-item>
+				<div ng-repeat="(head,list) in groups">
+					<ion-item class="faq_head item-body item-icon-right" 
+							  ng-click="toggleGroup(head)" 
+							  ng-class="{active: isGroupShown(head)}">
+						<i class="ion-arrow-graph-up-right"></i>&nbsp;{{head}}
+						<i class="icon" ng-class="isGroupShown(head) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+					</ion-item>
+					<ion-item class="faq_ans item-accordion" ng-show="isGroupShown(head)">
+				      	<div class="list cont" ng-repeat="(key,val) in list | filter:input.filterUser">
+							<div class="item item-divider">{{val.Designation}}</div>
+							<div class="item"><i class="icon ion-person"></i>&nbsp;{{val.Name_of_Officer}}</div>
+							<a class="item" href="tel:{{val.Resident_Mobile}}"><i class="icon ion-ios-telephone"></i>&nbsp;{{val.Resident_Mobile}}</a>
+							<a class="item" href="tel:{{val.Office}}"><i class="icon ion-ios-telephone"></i>&nbsp;{{val.Office}}</a>
+							<a class="item" href="mailto:{{val.Email}}"><i class="icon ion-email"></i>&nbsp;{{val.Email}}</a>
+				     	</div>       
+					</ion-item>
+				</div>
+			</ion-list>
+		</ion-list>
+	</ion-content>
+</ion-modal-view>

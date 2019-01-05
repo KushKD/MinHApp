@@ -1,0 +1,81 @@
+<style type="text/css">
+    .icon,input{
+        font-family: jura !important;
+        font-weight: 800 !important;
+    }
+    .error_div{
+        color: red !important;
+        font-weight: 800;
+    }
+    .item-checkbox,.ion-eye,.ion-eye-disabled{
+        background: rgba(155,155,100,0) !important;
+        border: none !important;
+        margin-top: -45px;
+        float: right
+    }
+    .checkbox-input-hidden{
+       display: none !important;
+       color: #444 !important;
+    }
+    ::-webkit-input-placeholder { /* Chrome */
+      color: #444 !important;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: #444 !important;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      color: #444 !important;
+      opacity: 1;
+    }
+    :-moz-placeholder { /* Firefox 4 - 18 */
+      color: #444 !important;
+      opacity: 1;
+    }
+</style>
+<ion-view class="homeView" view-title="Investor Login" hide-nav-bar="true">
+   <ion-content>
+      <button class="button button-icon button-energized ion-navicon-round" style="z-index:9999; font-size: 32px !important;position: absolute;" menu-toggle="left"></button>  
+      <div class="row row-center">
+         <div class="col col-center text-center">
+            <div id="container" class="animated bounceInLeft">            
+                <div id="bender">
+                    <br><br>
+                    <img src="img/menulogo.png" alt="DOI" class="animated" style="width: 150px;margin-top: -45px">   
+                </div>
+                <h1 class="animated bounceInDown" style="font-size: 21px;font-weight: 800;margin-top: -120px">
+                    Department of Industries<br>
+                    <small style="font-size: 12px;font-weight: 800">
+                        MINING &amp; GEOLOGICAL WING<br>
+                        Udyog Bhawan, Bemloe, Shimla-171001,<br> Himachal Pradesh
+                    </small>
+                </h1>
+                <form name="myForm" novalidate>
+                    <div class="card">
+                        <div class="item item-text-wrap">
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">E-Mail/IUID</span>
+                                <input type="text" ng-model="formData.username" required placeholder="E-Mail/IUID">
+                            </label>
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Password</span>
+                                <input type="{{showpassword ? 'text' : 'password'}}" required ng-model="formData.password" placeholder="******">
+                                <ion-checkbox ng-model="showpassword" ng-checked="false">
+                                    <i style="font-size: 12px; color: #444;font-weight: bold;text-transform: uppercase;">
+                                        {{showpassword ? 'hide' : 'show'}}
+                                    </i>
+                                </ion-checkbox>
+                            </label>
+                        </div>
+                        <div class="item item-divider">
+                            <input type="hidden" name="login_type" value="investor">
+                            <button type="submit" class="button button-outline button-block button-dark animated bounceInUp" 
+                                    ng-disabled="myForm.$invalid" ng-click="loginInvestor(formData)">Investor Login
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+         </div>
+      </div>
+   </ion-content>
+</ion-view>

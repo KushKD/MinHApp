@@ -1,0 +1,40 @@
+<style type="text/css">
+  .head{
+    background-image: url('img/menulogo.png');
+    background-position: center;
+    background-size: 50% 90%;
+    background-color: rgba(255,255,100,0.6);
+    background-repeat: no-repeat;
+  }
+  .menu_links{
+    cursor: pointer;
+    font-family: jura;
+    font-weight: 800
+  }
+  .menu_links:hover,.menu_links > p{
+    color: white !important;
+  }
+  .bar-dark{ 
+    background-color: rgba(150,150,50,0.6) !important;
+  }
+</style>
+<ion-view view-title="Dashboard" class="galleryView" 
+         style="background-image: url(img/dashbg.jpg); transform: translate3d(0%, 0px, 0px);
+                background-position: center;background-repeat: no-repeat;background-size: cover;">
+    <div class="bar bar-dark">
+      <button class="button button-icon button-energized ion-navicon-round" style="font-size: 32px !important;padding: 0px !important; position: absolute;" menu-toggle="left"></button>
+      <div class="title title-left header-item" style="left: 54px; right: 54px;">Dashboard</div>
+      <button ng-if="userInfo.token" class="button button-icon button-clear ion-more" ng-click="openUserInfo()"></button>
+    </div>
+    <ion-content ng-controller="DeptController">
+      <ion-list>
+         <div class="row row-wrap row-no-padding">
+            <ion-item ng-repeat="item in items" class="col col-50 button button-icon light animated pulse" 
+                      ng-style="{ 'background-color' : item.color }" on-tap="openItem(item)">
+               <i class="icon {{item.icon}}"></i>
+               <p class="bold">{{ item.title }}</p>
+            </ion-item>
+         </div>
+      </ion-list>
+   </ion-content>
+</ion-view>
